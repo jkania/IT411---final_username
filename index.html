@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IT 411 - Final - LOGIN</title>
+<link href="_css/site.css" rel="stylesheet">
+<style>
+#userform label.error {
+  font-size: 0.8em;
+  color: #F00;
+  font-weight: bold;
+  display: block;
+  margin-left: 215px;
+}
+#userform  input.error, #userform select.error  {
+  background: #FFA9B8;
+  border: 1px solid red;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function() {
+     $('#userform').validate({
+   
+   rules: {
+     username: {
+        required: true,
+     },
+     password: {
+        required: true,
+        rangelength:[8,16]
+     },
+     confirm_password: {equalTo:'#password'},
+     spam: "required"
+   }, //end rules
+   messages: {
+      username: {
+         required: "Please supply a user name.",
+       },
+      password: {
+        required: 'Please type a password',
+        rangelength: 'Password must be between 8 and 16 characters long.'
+      },
+      confirm_password: {
+        equalTo: 'The two passwords do not match.'
+      }
+   },
+   errorPlacement: function(error, element) { 
+          error.insertAfter(element);
+        }  
+
+  }); // end validate 
+
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		 <p class="logo">IT 411 - Final Exam - Jennifer Kania <i class="mm">User<br>
+             Name<br>
+             Form</i></p>
+	</div>
+	<div class="content">
+	<div class="main">
+	<h1>User Name Form</h1>
+		<form action="success.html" id="userform" method="get">
+			<div>
+				<label for="username" class="label">User Name: </label>
+				<input name="username" type="text" class="required" id="username" title="Please type your User name.">
+			</div>
+			<div><label for="password" class="label">Password: </label>
+          <input type="password" name="password" id="password" title="Please enter your Password.">
+			</div>
+            <div><label for="confirm_password" class="label">Confirm Password:</label>
+          <input type="password" name="confirm_password" id="confirm_password" title="Please confirm your Password.">
+			</div>
+        	<div>
+				<input type="submit" name="submit" id="submit" value="Submit">
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="footer">
+    <p>Created by Jennifer Kania</p>
+  </div>
+</div>
+</body>
+</html>
